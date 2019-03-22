@@ -25,6 +25,8 @@
 /* Begin PBXFileReference section */
 		7439D94122455624000E3A81 /* SLR Parser */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "SLR Parser"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7439D94422455624000E3A81 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		7439D94C2245574D000E3A81 /* stack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stack.h; sourceTree = "<group>"; };
+		7439D94D224557A9000E3A81 /* tree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tree.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,8 @@
 			isa = PBXGroup;
 			children = (
 				7439D94422455624000E3A81 /* main.c */,
+				7439D94C2245574D000E3A81 /* stack.h */,
+				7439D94D224557A9000E3A81 /* tree.h */,
 			);
 			path = "SLR Parser";
 			sourceTree = "<group>";
