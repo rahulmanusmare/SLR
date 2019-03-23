@@ -27,22 +27,33 @@ int getCol (char ele, char table[max][max][3]) {
 
 int main (int argc, const char * argv[]) {
     
-    int temp = 0;
     int s = 0;
     char str [20];
     char parseTable [max][max][3];
+    
+    // Input Production
     printf("Enter Any String (Ending with \'$\') : ");
     gets(str);
+    
+    // Initialized Stack With 0
     struct Stack* stack = createStack(100);
     push(stack, 0);
-    for (int i=0;i!='\0';i++) {
+    
+    // Loop Until Input String
+    for (int i=0;str [i]!='\0';i++) {
+        
+        // Getting Top of Stack
         char top = pop(stack);
         push(stack, top);
+        
         if (isnumber(top)) {
+            
             // Action
+            // Checking if the Action if Shift Reduce or Accept
             char action = parseTable [top+1][getCol(str[s], parseTable)][0];
             if (action == 's') {
                 // Shift
+                
             } else if (action == 'r') {
                 // Reduce
             } else if (action == 'a') {
