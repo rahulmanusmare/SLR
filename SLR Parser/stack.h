@@ -36,7 +36,6 @@ void push(struct Stack* stack, char item)
     if (isFull(stack))
         return;
     stack->array[++stack->top] = item;
-    printf("%d pushed to stack\n", item);
 }
 
 int pop(struct Stack* stack)
