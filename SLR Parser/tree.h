@@ -11,12 +11,12 @@
 
 struct node
 {
-    int data;
+    char data;
     struct node *left;
     struct node *right;
 };
 
-struct node* newNode(int data)
+struct node* newNode(char data)
 {
     struct node* node = (struct node*)malloc(sizeof(struct node));
     node->data = data;

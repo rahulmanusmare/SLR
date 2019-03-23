@@ -9,35 +9,74 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
+#include <ctype.h>
 #include "stack.h"
 #include "tree.h"
 #include "csvr.h"
+#define max 10
 
+
+int getCol (char ele, char table[max][max][3]) {
+    for (int i=0; i<max; i++) {
+        if (ele == table [0][i][0]) {
+            return i;
+        }
+    }
+    return 0;
+}
 
 int main (int argc, const char * argv[]) {
     
+    int temp = 0;
+    int s = 0;
     char str [20];
-    char parseTable [100][100];
+    char parseTable [max][max][3];
     printf("Enter Any String (Ending with \'$\') : ");
     gets(str);
     struct Stack* stack = createStack(100);
     push(stack, 0);
-    
-    readcsv ("assignment2-sample parsetable2.csv", parseTable);
-    
-    for (int i=0;i<20;i++) {
-        for (int j=0;j<20;j++) {
-            printf(" %c ", parseTable [i][j]);
+    for (int i=0;i!='\0';i++) {
+        char top = pop(stack);
+        push(stack, top);
+        if (isnumber(top)) {
+            // Action
+            char action = parseTable [top+1][getCol(str[s], parseTable)][0];
+            if (action == 's') {
+                // Shift
+            } else if (action == 'r') {
+                // Reduce
+            } else if (action == 'a') {
+                // Accept State
+            }
+        } else {
+            // Goto
         }
-        printf("\n");
     }
-    
+    /*
     for (int i=0;str[i]!='\0';i++) {
         if (str[i] == '$') {
             
         } else {
             
+            if ( parseTable [temp+1][temp][0] == 'r' ) {
+                int len = lenPro (parseTable[temp+1][temp][1]);
+                char pro[20] = readPro (parseTable[temp+1][temp][1]);
+                for (int j=0;j<len;j++) {
+                    pop(stack);
+                }
+                struct node *root = newNode(pro[0]);
+                root->left=str[i-1];
+                push(stack, )
+            } else if ( parseTable [temp+1][temp][0] == 's' ) {
+                push(stack, str [i]);
+                push(stack, stack->top);
+            } else if ( parseTable [temp+1][temp][0] == 'a' ) {
+                
+            } else {
+                printf("Invalid Parse Tree !!!");
+            }
         }
     }
+    */
     return 0;
 }
