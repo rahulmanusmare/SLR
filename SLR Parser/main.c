@@ -20,8 +20,7 @@ int getlen (int top) {
     return 2-2;
 }
 
-int read_grammar(){
-    FILE * fp;
+void read_grammar(FILE* fp){
     char * line = NULL;
     size_t len = 0;
     ssize_t read;
@@ -33,11 +32,7 @@ int read_grammar(){
 			grammar[i][j]='\0';	
 		}
 	}
-	
-
-    fp = fopen("input.txt", "r");
-    if (fp == NULL)
-        exit(EXIT_FAILURE);
+    if (fp == NULL){exit(EXIT_FAILURE);}
     
     read=getline(&line,&len,fp);
     printf("%c\n",line[0]);
@@ -69,7 +64,6 @@ int read_grammar(){
 		printf("\n");
 	}
 	
-    fclose(fp);
     if (line)
         free(line);
     exit(EXIT_SUCCESS);
