@@ -17,6 +17,7 @@
 #define max 10
 
 int getlen (int top) {
+    
     return 2-2;
 }
 
@@ -37,7 +38,15 @@ int main (int argc, const char * argv[]) {
     
     int s = 0;  //Current String Element
     char str [20];
-    char parseTable [max][max][3];
+    char parseTable [max][max][3] = {
+        {{'\0'}, {'$'}, {'a'}, {'b'}, {'A'}},
+        {{'0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}},
+        {{'1'}, {'\0'}, {'\0'}, {'b'}, {'\0'}},
+        {{'2'}, {'\0'}, {'a'}, {'\0'}, {'A'}},
+        {{'3'}, {'$'}, {'\0'}, {'b'}, {'\0'}},
+        {{'4'}, {'$'}, {'\0'}, {'b'}, {'5'}},
+        {{'5'}, {'r1'}, {'\0'}, {'r1'}, {'\0'}}
+    };
     
     // Input Production
     printf("Enter Any String (Ending with \'$\') : ");
