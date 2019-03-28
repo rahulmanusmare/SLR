@@ -20,6 +20,62 @@ int getlen (int top) {
     return 2-2;
 }
 
+int read_grammar(){
+    FILE * fp;
+    char * line = NULL;
+    size_t len = 0;
+    ssize_t read;
+	int nt,t;
+	int max=6;
+	char grammar[max][max];
+	for(int i=0;i<max;i++){
+		for(int j=0;j<max;j++){
+			grammar[i][j]='\0';	
+		}
+	}
+	
+
+    fp = fopen("input.txt", "r");
+    if (fp == NULL)
+        exit(EXIT_FAILURE);
+    
+    read=getline(&line,&len,fp);
+    printf("%c\n",line[0]);
+    printf("%c\n",line[2]);
+    
+    nt =line[0]-'0';
+    t = line[2]-'0';
+	
+	printf("Non Terminals= %d\n",nt);
+	printf("Terminals= %d\n",t);
+	
+	int count=0;
+    while ((read = getline(&line, &len, fp)) != -1){
+        //printf("Retrieved line of length %zu:\n", read);
+        printf("%s", line);
+        int j=0;
+        while(line[j]!='\0'){
+        	grammar[count][j]=line[j];
+        	j=j+1;
+        }  
+        count+=1;
+    }
+
+	printf("number of productions=%d\n",count);
+	for(int i=0;i<max;i++){
+		for(int j=0;j<max;j++){
+			printf("%c",grammar[i][j]);
+		}
+		printf("\n");
+	}
+	
+    fclose(fp);
+    if (line)
+        free(line);
+    exit(EXIT_SUCCESS);
+            
+}
+
 char getpro () {
     return 'A';
 }
