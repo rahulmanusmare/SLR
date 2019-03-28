@@ -13,6 +13,7 @@
 #include "stack.h"
 #include "tree.h"
 #include "csvr.h"
+#include "fileinput.h"
 #define max 10
 
 int getlen (int top) {
@@ -68,7 +69,8 @@ int main (int argc, const char * argv[]) {
             } else if (action == 'r') {
                 // Reduce
                 // For Loop Will Pop 2X the lenghth of Production
-                int temp = getlen(top);
+                int prono = parseTable [index][col][1];
+                int temp = getlen(prono);
                 for (int j=0;j<2*temp;j++) {
                     pop(stack);
                 }
@@ -78,7 +80,8 @@ int main (int argc, const char * argv[]) {
                 printf("String Accepted !!!");
                 exit(0);
             } else {
-                printf('string rejected :(');
+                // Rejected Action
+                printf("string rejected :( ");
                 
             }
         } else {
