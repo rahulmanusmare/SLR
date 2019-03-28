@@ -78,7 +78,7 @@ int main (int argc, const char * argv[]) {
                 printf("String Accepted !!!");
                 exit(0);
             } else {
-                // Input Rejectd
+                printf('string rejected :(');
                 
             }
         } else {
