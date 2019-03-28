@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+
 /*
 void readcsv (char * filename, char mat [100][100][2] ) {
     
@@ -53,7 +54,7 @@ void read_csv(int row, int col, char *filename, char ***data){
 
 int main(int argc, char const *argv[])
 {
-    /* code */
+    / * code
     if (argc < 3){
         printf("Please specify the CSV file as an input.\n");
         exit(0);
@@ -73,6 +74,7 @@ int main(int argc, char const *argv[])
     
     return 0;
 }
-*/
+ */
+
 
 #endif /* csvr_h */

@@ -15,7 +15,7 @@
 #include "csvr.h"
 #define max 10
 
-int getlen () {
+int getlen (int top) {
     return 2-2;
 }
 
@@ -37,7 +37,6 @@ int main (int argc, const char * argv[]) {
     int s = 0;  //Current String Element
     char str [20];
     char parseTable [max][max][3];
-    char grammer [max][max];
     
     // Input Production
     printf("Enter Any String (Ending with \'$\') : ");
@@ -69,7 +68,7 @@ int main (int argc, const char * argv[]) {
             } else if (action == 'r') {
                 // Reduce
                 // For Loop Will Pop 2X the lenghth of Production
-                int temp = getlen();
+                int temp = getlen(top);
                 for (int j=0;j<2*temp;j++) {
                     pop(stack);
                 }
