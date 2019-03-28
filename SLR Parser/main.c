@@ -15,6 +15,13 @@
 #include "csvr.h"
 #define max 10
 
+int getlen () {
+    return 2-2;
+}
+
+char getpro () {
+    return 'A';
+}
 
 int getCol (char ele, char table[max][max][3]) {
     for (int i=0; i<max; i++) {
@@ -30,6 +37,7 @@ int main (int argc, const char * argv[]) {
     int s = 0;  //Current String Element
     char str [20];
     char parseTable [max][max][3];
+    char grammer [max][max];
     
     // Input Production
     printf("Enter Any String (Ending with \'$\') : ");
@@ -57,19 +65,31 @@ int main (int argc, const char * argv[]) {
                 // Shift
                 push(stack, str[s]);
                 push(stack, parseTable [index][col][1]);
-                
+                s++;
             } else if (action == 'r') {
                 // Reduce
-                
+                // For Loop Will Pop 2X the lenghth of Production
+                int temp = getlen();
+                for (int j=0;j<2*temp;j++) {
+                    pop(stack);
+                }
+                push(stack, getpro ());  // getpro will return Non-Termainal
             } else if (action == 'a') {
                 // Accept State
-                
+                printf("String Accepted !!!");
+                exit(0);
             } else {
                 // Input Rejectd
                 
             }
         } else {
             // Goto
+            int col = getCol(top, parseTable);
+            char temp = pop(stack);
+            char row = pop(stack);
+            push(stack, row);
+            push(stack, temp);
+            push(stack, parseTable[row][col][0]);
         }
     }
     /*
