@@ -27,7 +27,7 @@ int getCol (char ele, char table[max][max][3]) {
 
 int main (int argc, const char * argv[]) {
     
-    int s = 0;
+    int s = 0;  //Current String Element
     char str [20];
     char parseTable [max][max][3];
     
@@ -50,14 +50,23 @@ int main (int argc, const char * argv[]) {
             
             // Action
             // Checking if the Action if Shift Reduce or Accept
-            char action = parseTable [top+1][getCol(str[s], parseTable)][0];
+            int index = atoi(&top)+1;
+            int col = getCol(str [s], parseTable);
+            char action = parseTable [index][col][0];
             if (action == 's') {
                 // Shift
+                push(stack, str[s]);
+                push(stack, parseTable [index][col][1]);
                 
             } else if (action == 'r') {
                 // Reduce
+                
             } else if (action == 'a') {
                 // Accept State
+                
+            } else {
+                // Input Rejectd
+                
             }
         } else {
             // Goto

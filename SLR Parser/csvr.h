@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
+/*
 void readcsv (char * filename, char mat [100][100][2] ) {
     
 }
@@ -73,5 +73,6 @@ int main(int argc, char const *argv[])
     
     return 0;
 }
+*/
 
 #endif /* csvr_h */
