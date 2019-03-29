@@ -14,39 +14,38 @@
 #include <stdlib.h>
 #include <string.h>
 
-int main(void)
-{
-    FILE * fp;
-    char * line = NULL;
-    size_t len = 0;
-    ssize_t read;
+int getlen (int l) {
     
-    fp = fopen("grammer1.txt", "r");
-    if (fp == NULL)
+    FILE * file;
+    char path[100];
+    char ch;
+    int characters, lines;
+    strcpy(path, "/assignment2-sample-grammar2.txt");
+    file = fopen(path, "r");
+    if (file == NULL) {
+        printf("\nUnable to open file.\n");
+        printf("Please check if file exists and you have read privilege.\n");
         exit(EXIT_FAILURE);
-    
-    char **data;
-    data = (char **)malloc(20 * sizeof(char *));
-    for (int i = 0; i < 20; ++i){
-        data[i] = (char *)malloc(20 * sizeof(char));
     }
     
-    while ((read = getline(&line, &len, fp)) != -1) {
-        len = strlen(line);
-        //printf("Retrieved line of length %zu:\n", read);
-        //printf("%s\n", line);
-        //rintf("%d\n", len);
-        for (int i = 0; i < 1; i++){
-            data[i] = line;
-            printf("%s", data[i]);
+    characters = lines = 0;
+    while ((ch = fgetc(file)) != EOF) {
+        if (ch == '\n') {
+            lines++;
+            if (lines == l+1) {
+                break;
+            }
         }
-        
     }
-    
-    fclose(fp);
-    if (line)
-        free(line);
-    exit(EXIT_SUCCESS);
+    while ((ch = fgetc(file)) != '\n') {
+        characters++;
+    }
+    fclose(file);
+    return lines;
+}
+
+char getpro () {
+    return 'A';
 }
 
 #endif /* fileinput_h */

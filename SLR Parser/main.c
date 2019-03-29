@@ -12,67 +12,10 @@
 #include <ctype.h>
 #include "stack.h"
 #include "tree.h"
-#include "csvr.h"
-//#include "fileinput.h"
+//#include "csvr.h"
+#include "fileinput.h"
 #define max 10
 
-int getlen (int top) {
-    
-    return 2-2;
-}
-
-void read_grammar(FILE* fp){
-    char * line = NULL;
-    size_t len = 0;
-    ssize_t read;
-	int nt,t;
-	char grammar[max][max];
-	for(int i=0;i<max;i++){
-		for(int j=0;j<max;j++){
-			grammar[i][j]='\0';	
-		}
-	}
-    if (fp == NULL){exit(EXIT_FAILURE);}
-    
-    read=getline(&line,&len,fp);
-    printf("%c\n",line[0]);
-    printf("%c\n",line[2]);
-    
-    nt =line[0]-'0';
-    t = line[2]-'0';
-	
-	printf("Non Terminals= %d\n",nt);
-	printf("Terminals= %d\n",t);
-	
-	int count=0;
-    while ((read = getline(&line, &len, fp)) != -1){
-        //printf("Retrieved line of length %zu:\n", read);
-        printf("%s", line);
-        int j=0;
-        while(line[j]!='\0'){
-        	grammar[count][j]=line[j];
-        	j=j+1;
-        }  
-        count+=1;
-    }
-
-	printf("number of productions=%d\n",count);
-	for(int i=0;i<max;i++){
-		for(int j=0;j<max;j++){
-			printf("%c",grammar[i][j]);
-		}
-		printf("\n");
-	}
-	
-    if (line)
-        free(line);
-    exit(EXIT_SUCCESS);
-            
-}
-
-char getpro () {
-    return 'A';
-}
 
 int getCol (char ele, char table[max][max][3]) {
     for (int i=0; i<max; i++) {
@@ -99,8 +42,8 @@ int main (int argc, const char * argv[]) {
     
     // Input Production
     printf("Enter Any String (Ending with \'$\') : ");
-    gets(str);
-    
+    //gets(str);
+    printf ("%d", getlen(2));
     // Initialized Stack With 0
     struct Stack* stack = createStack(100);
     push(stack, 0);
