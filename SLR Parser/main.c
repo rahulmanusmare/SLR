@@ -16,9 +16,16 @@
 //#include "fileinput.h"
 #define max 10
 
+char grammar[max][max];
 int getlen (int top) {
-    
-    return 2-2;
+    int legth=0
+	while(grammar[top][j]!='\0'){
+		length=length+1;
+        	j=j+1;
+        }  	
+	length=length-2;
+    }
+    return length;
 }
 
 void read_grammar(FILE* fp){
@@ -26,7 +33,6 @@ void read_grammar(FILE* fp){
     size_t len = 0;
     ssize_t read;
 	int nt,t;
-	char grammar[max][max];
 	for(int i=0;i<max;i++){
 		for(int j=0;j<max;j++){
 			grammar[i][j]='\0';	
