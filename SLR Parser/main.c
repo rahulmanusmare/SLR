@@ -13,15 +13,14 @@
 #include "stack.h"
 #include "tree.h"
 //#include "csvr.h"
-#include "fileinput.h"
+//#include "fileinput.h"
 #define max 10
-/*
+
 char grammar[max][max];
 
 int getlen (int top) {
     int length=0,j=0;
-    printf ("a");
-    while(grammar[top][j]!='\0'){
+	while(grammar[top][j]!='\0'){
 		length=length+1;
         	j=j+1;
     }
@@ -81,7 +80,6 @@ void read_grammar(FILE* fp){
 char getpro () {
     return 'A';
 }
- */
 
 int getCol (char ele, char table[max][max][3]) {
     for (int i=0; i<max; i++) {
@@ -94,9 +92,9 @@ int getCol (char ele, char table[max][max][3]) {
 
 int main (int argc, const char * argv[]) {
     
-    //FILE * file;
-    //file = fopen("/assignment2-sample-grammar2.txt", "r");
-    //read_grammar (file);
+    FILE * file;
+    file = fopen("/assignment2-sample-grammar2.txt", "r");
+    read_grammar (file);
     int s = 0;  //Current String Element
     char str [20];
     char parseTable [max][max][3] = {
@@ -125,7 +123,6 @@ int main (int argc, const char * argv[]) {
         push(stack, top);
         
         if (isnumber(top)) {
-            
             // Action
             // Checking if the Action if Shift Reduce or Accept
             int index = atoi(&top)+1;
