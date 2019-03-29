@@ -6,19 +6,23 @@
 #include "stack.h"
 #include "tree.h"
 //#include "fileinput.h"
-#define max 10
+#define max 6
 
 char grammar[max][max];
 
 int getlen (int top) {
-    int length=0,j=0;
-    printf ("a");
-    while(grammar[top][j]!='\0'){
-	length=length+1;
-        j=j+1;
+	int length=0,j=0;
+    for(int j=0;j<max;j++){
+    	if(grammar[top-1][j]!='\0'){
+    		length=length+1;
+    	}
     }
+    /*while(grammar[top-1][j]!='\0'){
+		length=length+1;
+        j=j+1;
+    }*/
 	length=length-2;
-    return (length);
+    return length;
 }
 
 void read_grammar(FILE* fp){
@@ -35,9 +39,8 @@ void read_grammar(FILE* fp){
     if (fp == NULL){exit(EXIT_FAILURE);}
     
     read=getline(&line,&len,fp);
-    printf("%c\n",line[0]);
-    printf("%c\n",line[2]);
-    
+    //printf("%c\n",line[0]);
+    //printf("%c\n",line[2]);    
     nt =line[0]-'0';
     t = line[2]-'0';
 	
@@ -47,7 +50,7 @@ void read_grammar(FILE* fp){
 	int count=0;
     while ((read = getline(&line, &len, fp)) != -1){
         //printf("Retrieved line of length %zu:\n", read);
-        printf("%s", line);
+        //printf("%s", line);
         int j=0;
         while(line[j]!='\0'){
         	grammar[count][j]=line[j];
@@ -56,13 +59,14 @@ void read_grammar(FILE* fp){
         count+=1;
     }
 
+    
 	//printf("number of productions=%d\n",count);
-	for(int i=0;i<max;i++){
+	/*for(int i=0;i<max;i++){
 		for(int j=0;j<max;j++){
 			printf("%c",grammar[i][j]);
 		}
 		printf("\n");
-	}
+	}*/
 	
                
 }
@@ -97,17 +101,19 @@ int main (int argc, const char * argv[]) {
         {{4}, {'\0'}, {"s2"}, {'\0'}, {5}},
         {{5}, {"r1"}, {'\0'}, {"r1"}, {'\0'}}
     };
-    for(int i=0;i<max;i++){
+    //for(int i=0;i<3;i++){
+    	int i=0;
     	for(int j=0;j<max;j++){
     		printf("%c",grammar[i][j]);
     	}
     	printf("\n");
-    }
-	
+    //}
+	//printf("meet\n");
     // Input Production
+    printf ("%d\n", getlen(2));
     printf("Enter Any String (Ending with \'$\') : ");
     gets(str);
-    printf ("%d", getlen(2));
+    
     // Initialized Stack With 0
     struct Stack* stack = createStack(100);
     push(stack, 0);
