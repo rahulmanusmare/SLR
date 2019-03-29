@@ -1,8 +1,8 @@
 //
 //  stack.h
-//  SLR Parser
+//  SLR-new
 //
-//  Created by eRrOr on 22/03/19.
+//  Created by eRrOr on 30/03/19.
 //  Copyright © 2019 eRrOr. All rights reserved.
 //
 
