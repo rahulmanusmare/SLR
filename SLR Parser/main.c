@@ -26,7 +26,6 @@ void read_grammar(FILE* fp){
     size_t len = 0;
     ssize_t read;
 	int nt,t;
-	int max=6;
 	char grammar[max][max];
 	for(int i=0;i<max;i++){
 		for(int j=0;j<max;j++){
