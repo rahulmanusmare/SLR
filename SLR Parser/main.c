@@ -1,10 +1,3 @@
-//
-//  main.c
-//  SLR Parser
-//
-//  Created by eRrOr on 22/03/19.
-//  Copyright © 2019 eRrOr. All rights reserved.
-//
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,18 +5,17 @@
 #include <ctype.h>
 #include "stack.h"
 #include "tree.h"
-//#include "csvr.h"
-#include "fileinput.h"
+//#include "fileinput.h"
 #define max 10
-/*
+
 char grammar[max][max];
 
 int getlen (int top) {
     int length=0,j=0;
     printf ("a");
     while(grammar[top][j]!='\0'){
-		length=length+1;
-        	j=j+1;
+	length=length+1;
+        j=j+1;
     }
 	length=length-2;
     return (length);
@@ -49,8 +41,8 @@ void read_grammar(FILE* fp){
     nt =line[0]-'0';
     t = line[2]-'0';
 	
-	printf("Non Terminals= %d\n",nt);
-	printf("Terminals= %d\n",t);
+	//printf("Non Terminals= %d\n",nt);
+	//printf("Terminals= %d\n",t);
 	
 	int count=0;
     while ((read = getline(&line, &len, fp)) != -1){
@@ -64,7 +56,7 @@ void read_grammar(FILE* fp){
         count+=1;
     }
 
-	printf("number of productions=%d\n",count);
+	//printf("number of productions=%d\n",count);
 	for(int i=0;i<max;i++){
 		for(int j=0;j<max;j++){
 			printf("%c",grammar[i][j]);
@@ -72,16 +64,13 @@ void read_grammar(FILE* fp){
 		printf("\n");
 	}
 	
-    if (line)
-        free(line);
-    exit(EXIT_SUCCESS);
-            
+               
 }
 
 char getpro () {
     return 'A';
 }
- */
+  
 
 int getCol (char ele, char table[max][max][3]) {
     for (int i=0; i<max; i++) {
@@ -94,9 +83,9 @@ int getCol (char ele, char table[max][max][3]) {
 
 int main (int argc, const char * argv[]) {
     
-    //FILE * file;
-    //file = fopen("/assignment2-sample-grammar2.txt", "r");
-    //read_grammar (file);
+    FILE * file;
+    file = fopen("assignment2-sample-grammar2.txt", "r");
+    read_grammar(file);
     int s = 0;  //Current String Element
     char str [20];
     char parseTable [max][max][3] = {
@@ -108,10 +97,16 @@ int main (int argc, const char * argv[]) {
         {{4}, {'\0'}, {"s2"}, {'\0'}, {5}},
         {{5}, {"r1"}, {'\0'}, {"r1"}, {'\0'}}
     };
-    
+    for(int i=0;i<max;i++){
+    	for(int j=0;j<max;j++){
+    		printf("%c",grammar[i][j]);
+    	}
+    	printf("\n");
+    }
+	
     // Input Production
     printf("Enter Any String (Ending with \'$\') : ");
-    //gets(str);
+    gets(str);
     printf ("%d", getlen(2));
     // Initialized Stack With 0
     struct Stack* stack = createStack(100);
@@ -124,7 +119,7 @@ int main (int argc, const char * argv[]) {
         char top = pop(stack);
         push(stack, top);
         
-        if (isnumber(top)) {
+        if (isdigit(top)) {
             
             // Action
             // Checking if the Action if Shift Reduce or Accept
