@@ -17,11 +17,9 @@
 int getlen (int l) {
     
     FILE * file;
-    char path[100];
     char ch;
     int characters, lines;
-    strcpy(path, "/assignment2-sample-grammar2.txt");
-    file = fopen(path, "r");
+    file = fopen("/assignment2-sample-grammar2.txt", "r");
     if (file == NULL) {
         printf("\nUnable to open file.\n");
         printf("Please check if file exists and you have read privilege.\n");
